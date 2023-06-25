@@ -1,3 +1,6 @@
+using DB;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,15 +9,25 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddDbContext<NewShoreAirContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("NewShoreAirConnection")));
+
 
 var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+/*DEJAR LA PRIMERA VEZ QUE SE EJECUTA EL PROYECTO*/
+/*
+using (var scope = app.Services.CreateScope())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    var context = scope.ServiceProvider.GetRequiredService<NewShoreAirContext>();
+    context.Database.Migrate(); 
+} */
+
+    // Configure the HTTP request pipeline.
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI();
+    }
 
 app.UseHttpsRedirection();
 

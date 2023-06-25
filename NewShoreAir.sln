@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewShoreAir", "NewShoreAir\NewShoreAir.csproj", "{6E2942D2-F4F2-4BF4-A832-FD070B3BF07D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewShoreAir", "NewShoreAir\NewShoreAir.csproj", "{6E2942D2-F4F2-4BF4-A832-FD070B3BF07D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DB", "DB\DB.csproj", "{836D1D29-7FA2-46F4-82D6-639B370CD054}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{6E2942D2-F4F2-4BF4-A832-FD070B3BF07D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E2942D2-F4F2-4BF4-A832-FD070B3BF07D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E2942D2-F4F2-4BF4-A832-FD070B3BF07D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{836D1D29-7FA2-46F4-82D6-639B370CD054}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{836D1D29-7FA2-46F4-82D6-639B370CD054}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{836D1D29-7FA2-46F4-82D6-639B370CD054}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{836D1D29-7FA2-46F4-82D6-639B370CD054}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
