@@ -12,16 +12,22 @@ namespace DB
         public DbSet<Transport> Transportes { get; set; }
         public DbSet<Flight> Flights { get; set; }
         public DbSet<Journey> Journeys { get; set; } 
-        public DbSet<JourneyFlight> JourneyFlights { get; set; } 
+        public DbSet<JourneyFlight> JourneyFlights { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override async void OnModelCreating(ModelBuilder modelBuilder)
         {
+            /*
+            List<Transport> transportsInit = new List<Transport>();
+            List<Flight> FlightInit = new List<Flight>();
+            string response = await InitialDataController.RequestApi();
+            InitialDataController.SaveData(response,ref transportsInit,ref FlightInit); */
             modelBuilder.Entity<Transport>(transport =>
             {
                 transport.ToTable("transport");
                 transport.HasKey(p => p.TransportID);
                 transport.Property(p=> p.FlightCarrier).IsRequired().HasMaxLength(5);
-                transport.Property(p=> p.FlightNumber).IsRequired().HasMaxLength(10);
+                transport.Property(p=> p.FlightNumber).IsRequired().HasMaxLength(10); 
+              //  transport.HasData(transportsInit);
             });
 
             modelBuilder.Entity<Flight>(flight =>
@@ -32,6 +38,7 @@ namespace DB
                 flight.Property(p => p.Origin).IsRequired();
                 flight.Property(p => p.Destination).IsRequired();
                 flight.Property(p => p.Price).IsRequired();
+            //    flight.HasData(FlightInit);
             });
 
             modelBuilder.Entity<Journey>(journey =>

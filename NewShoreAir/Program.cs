@@ -1,5 +1,6 @@
 using DB;
 using Microsoft.EntityFrameworkCore;
+using NewShoreAir.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,12 +16,14 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("NewShoreAirConne
 
 var app = builder.Build();
 /*DEJAR LA PRIMERA VEZ QUE SE EJECUTA EL PROYECTO*/
-/*
+
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<NewShoreAirContext>();
-    context.Database.Migrate(); 
-} */
+    context.Database.Migrate();
+    string response = await InitialDataController.RequestApi();
+    await InitialDataController.SaveData(response, context);
+} 
 
     // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment())
